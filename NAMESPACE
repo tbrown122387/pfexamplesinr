@@ -1,0 +1,4 @@
+useDynLib(pfexamplesinr)
+import(RcppEigen)
+importFrom(Rcpp, evalCpp)
+export("Rcpp.fake.fun")
