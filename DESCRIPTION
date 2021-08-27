@@ -1,11 +1,11 @@
 Package: pfexamplesinr
 Type: Package
-Title: What the package does (short line)
+Title: Demonstrates how to use PF c++ code in R
 Version: 1.0
 Date: 2021-08-22
-Author: Who wrote it
-Maintainer: Who to complain to <yourfault@somewhere.net>
-Description: More about what it does (maybe more than one line)
-License: What license is it under?
+Author: Taylor Brown
+Maintainer: Who to complain to <trb5me@virginia.edu>
+Description: Demonstrates how to use PF c++ code in R
+License: MIT + file LICENSE
 Imports: Rcpp (>= 1.0.7)
 LinkingTo: Rcpp, RcppEigen

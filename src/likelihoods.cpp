@@ -4,8 +4,8 @@
 
 // [[Rcpp::depends(RcppEigen)]]
 
-// 1e3 particles, 5 bits 
-#define NP 2
+// choose number of particles, and number of bits for inverse Hilbert curve map  
+#define NP 500
 #define NB 5
 #define debug_mode false
 
@@ -23,10 +23,13 @@ using svol_pfilter = svol_sisr_hilb<NP,NB, hilb_sys_resamp_T, double, debug_mode
 // uProposal will be dimension (time X (particles + 1))
 // first NP columns will be used for state sampling 
 // last column will be used for resampling at each time point
+// 3. 
+// choosing NP or NB too large will result in stackoverflow
+// number of particles is set in two places: in the #define directive and also used in  your R script
 
 
 // [[Rcpp::export]]
-double approxLL(const Map<VectorXd> y, const Map<VectorXd> thetaProposal, const Map<MatrixXd> uProposal) {
+double svolApproxLL(const Map<VectorXd> y, const Map<VectorXd> thetaProposal, const Map<MatrixXd> uProposal) {
 
   // construct particle filter object
   svol_pfilter pf(thetaProposal(0), thetaProposal(1), thetaProposal(2)); // order: phi, beta, sigma
@@ -66,8 +69,8 @@ double approxLL(const Map<VectorXd> y, const Map<VectorXd> thetaProposal, const 
 
 /*** R
 numTime <- 3
-numParts <- 2 # make sure this agrees with NP
+numParts <- 500 # make sure this agrees with NP
 u <- matrix(rnorm(numTime*(numParts+1)), ncol = numParts+1)
-params <- c(.9, 1, .1) #phi, beta, sigma
-approxLL(rnorm(numTime), params, u)
+params <- c(.9, 1, .1) # -1 < phi < 1, beta, sigma > 0
+hist(replicate(100, svolApproxLL(rnorm(numTime), params, u)))
 */
