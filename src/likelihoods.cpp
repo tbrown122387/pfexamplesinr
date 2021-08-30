@@ -3,8 +3,6 @@
 #include <RcppEigen.h>
 
 // [[Rcpp::depends(RcppEigen)]]
-// [[Rcpp::plugins(cpp17)]]
-
 
 // choose number of particles, and number of bits for inverse Hilbert curve map  
 #define NP 500

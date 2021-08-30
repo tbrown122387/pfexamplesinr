@@ -226,9 +226,6 @@ void SISRFilter<nparts,dimx,dimy,resamp_t,float_t, debug>::filter(const osv &dat
             // overwrite stuff
             m_particles[ii] = newSamp;
 
-            if constexpr(debug) 
-                std::cout << "time: " << m_now << ", transposed sample: " << m_particles[ii].transpose() << ", log unnorm weight: " << m_logUnNormWeights[ii] << "\n";
-        
         }
        
         // compute estimate of log p(y_t|y_{1:t-1}) with log-exp-sum trick
@@ -258,10 +255,6 @@ void SISRFilter<nparts,dimx,dimy,resamp_t,float_t, debug>::filter(const osv &dat
             }
             m_expectations[fId] = numer/denom;
 
-            // print stuff if debug mode is on
-            if constexpr(debug)
-                std::cout << "transposed expectation " << fId << ": " << m_expectations[fId].transpose() << "\n";
-
             fId++;
         }
  
@@ -284,11 +277,6 @@ void SISRFilter<nparts,dimx,dimy,resamp_t,float_t, debug>::filter(const osv &dat
             m_logUnNormWeights[ii] += logMuEv(m_particles[ii]);
             m_logUnNormWeights[ii] += logGEv(data, m_particles[ii]);
             m_logUnNormWeights[ii] -= logQ1Ev(m_particles[ii], data);
-
-            if constexpr(debug) 
-                std::cout << "time: " << m_now << ", transposed sample: " << m_particles[ii].transpose() << ", log unnorm weight: " << m_logUnNormWeights[ii] << "\n";
-
-
         }
        
         // calculate log cond likelihood with log-exp-sum trick
@@ -315,11 +303,7 @@ void SISRFilter<nparts,dimx,dimy,resamp_t,float_t, debug>::filter(const osv &dat
                 denom += std::exp(m_logUnNormWeights[prtcl] - max);
             }
             m_expectations[fId] = numer/denom;
-
-            // print stuff if debug mode is on
-            if constexpr(debug)
-                std::cout << "transposed expectation " << fId << ": " << m_expectations[fId].transpose() << "\n";
-
+            
             fId++;
         }
    
@@ -556,9 +540,6 @@ void SISRFilterCRN<nparts,dimx,dimy,dimu,dimur,resamp_t,float_t, debug>::filter(
             // overwrite stuff
             m_particles[ii] = newSamp;
 
-            if constexpr(debug) 
-                std::cout << "time: " << m_now << ", transposed sample: " << m_particles[ii].transpose() << ", log unnorm weight: " << m_logUnNormWeights[ii] << "\n";
-        
         }
        
         // compute estimate of log p(y_t|y_{1:t-1}) with log-exp-sum trick
@@ -588,10 +569,6 @@ void SISRFilterCRN<nparts,dimx,dimy,dimu,dimur,resamp_t,float_t, debug>::filter(
             }
             m_expectations[fId] = numer/denom;
 
-            // print stuff if debug mode is on
-            if constexpr(debug)
-                std::cout << "transposed expectation " << fId << ": " << m_expectations[fId].transpose() << "\n";
-
             fId++;
         }
  
@@ -614,10 +591,6 @@ void SISRFilterCRN<nparts,dimx,dimy,dimu,dimur,resamp_t,float_t, debug>::filter(
             m_logUnNormWeights[ii] += logMuEv(m_particles[ii]);
             m_logUnNormWeights[ii] += logGEv(data, m_particles[ii]);
             m_logUnNormWeights[ii] -= logQ1Ev(m_particles[ii], data);
-
-            if constexpr(debug) 
-                std::cout << "time: " << m_now << ", transposed sample: " << m_particles[ii].transpose() << ", log unnorm weight: " << m_logUnNormWeights[ii] << "\n";
-
 
         }
        
@@ -645,10 +618,6 @@ void SISRFilterCRN<nparts,dimx,dimy,dimu,dimur,resamp_t,float_t, debug>::filter(
                 denom += std::exp(m_logUnNormWeights[prtcl] - max);
             }
             m_expectations[fId] = numer/denom;
-
-            // print stuff if debug mode is on
-            if constexpr(debug)
-                std::cout << "transposed expectation " << fId << ": " << m_expectations[fId].transpose() << "\n";
 
             fId++;
         }
