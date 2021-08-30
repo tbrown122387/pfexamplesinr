@@ -1,5 +1,8 @@
 #include "svol_sisr_hilb.h"
 #include "resamplers.h"
+
+#include <limits>
+
 #include <RcppEigen.h>
 
 // [[Rcpp::depends(RcppEigen)]]
@@ -21,11 +24,6 @@
 // choosing NP or NB too large will result in stackoverflow
 // number of particles is set in two places: in the #define directive and also used in  your R script
 
-
-
-// using Eigen::Map; 
-// using Eigen::MatrixXd;
-// using Eigen::VectorXd;
 using hilb_sys_resamp_T = pf::resamplers::sys_hilb_resampler<NP,1,NB,double>;
 using svol_pfilter = svol_sisr_hilb<NP,NB, hilb_sys_resamp_T, double, debug_mode>; 
 
