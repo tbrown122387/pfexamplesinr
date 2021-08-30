@@ -39,9 +39,15 @@ using svol_pfilter = svol_sisr_hilb<NP,NB, hilb_sys_resamp_T, double, debug_mode
 // [[Rcpp::export]]
 double svolApproxLL(Eigen::Map<Eigen::VectorXd> y, Eigen::Map<Eigen::VectorXd> thetaProposal, Eigen::Map<Eigen::MatrixXd> uProposal) {
 
+  double phi = thetaProposal(0);
+  double beta = thetaProposal(1);
+  double sigma = thetaProposal(2);
+  if( (abs(phi) >= 1.0) || sigma <= 0.0 )
+    return -std::numeric_limits<double>::infinity();
+  
   // construct particle filter object
   // param order: phi, beta, sigma
-  svol_pfilter pf(thetaProposal(0), thetaProposal(1), thetaProposal(2)); 
+  svol_pfilter pf(phi, beta, sigma); 
 
   // iterate over the data 
   double log_like(0.0);
