@@ -9,3 +9,5 @@ Description: Demonstrates how to use PF c++ code in R
 License: MIT + file LICENSE
 Imports: Rcpp (>= 1.0.7)
 LinkingTo: Rcpp, RcppEigen
+RoxygenNote: 7.1.1
+Encoding: UTF-8

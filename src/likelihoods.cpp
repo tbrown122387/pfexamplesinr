@@ -1,20 +1,15 @@
-#include <RcppEigen.h>
 #include "svol_sisr_hilb.h"
 #include "resamplers.h"
+#include <RcppEigen.h>
 
 // [[Rcpp::depends(RcppEigen)]]
+
 
 // choose number of particles, and number of bits for inverse Hilbert curve map  
 #define NP 500
 #define NB 5
 #define debug_mode false
 
-
-using Eigen::Map; 
-using Eigen::MatrixXd;
-using Eigen::VectorXd;
-using hilb_sys_resamp_T = pf::resamplers::sys_hilb_resampler<NP,1,NB,double>;
-using svol_pfilter = svol_sisr_hilb<NP,NB, hilb_sys_resamp_T, double, debug_mode>; 
 
 // helpful notes:
 // 1. 
@@ -28,11 +23,25 @@ using svol_pfilter = svol_sisr_hilb<NP,NB, hilb_sys_resamp_T, double, debug_mode
 // number of particles is set in two places: in the #define directive and also used in  your R script
 
 
+
+// using Eigen::Map; 
+// using Eigen::MatrixXd;
+// using Eigen::VectorXd;
+using hilb_sys_resamp_T = pf::resamplers::sys_hilb_resampler<NP,1,NB,double>;
+using svol_pfilter = svol_sisr_hilb<NP,NB, hilb_sys_resamp_T, double, debug_mode>; 
+
+//' Calculates approximate log-likelihood of simple stochastic volatility model (Taylor '82)
+//'
+//' @param y univariate time series vector
+//' @param thetaProposal parameter vector (order is phi, beta, sigma)
+//' @param uProposal standard normal variates of dimension time X (particles + 1)
+//' @return approximate log-likelihood
 // [[Rcpp::export]]
-double svolApproxLL(const Map<VectorXd> y, const Map<VectorXd> thetaProposal, const Map<MatrixXd> uProposal) {
+double svolApproxLL(Eigen::Map<Eigen::VectorXd> y, Eigen::Map<Eigen::VectorXd> thetaProposal, Eigen::Map<Eigen::MatrixXd> uProposal) {
 
   // construct particle filter object
-  svol_pfilter pf(thetaProposal(0), thetaProposal(1), thetaProposal(2)); // order: phi, beta, sigma
+  // param order: phi, beta, sigma
+  svol_pfilter pf(thetaProposal(0), thetaProposal(1), thetaProposal(2)); 
 
   // iterate over the data 
   double log_like(0.0);
@@ -58,7 +67,6 @@ double svolApproxLL(const Map<VectorXd> y, const Map<VectorXd> thetaProposal, co
     log_like += pf.getLogCondLike();
   }
     
-  //return es.eigenvalues();
   return log_like;
 }
 

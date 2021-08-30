@@ -11,6 +11,19 @@ Rcpp::Rostream<true>&  Rcpp::Rcout = Rcpp::Rcpp_cout_get();
 Rcpp::Rostream<false>& Rcpp::Rcerr = Rcpp::Rcpp_cerr_get();
 #endif
 
+// svolApproxLL
+double svolApproxLL(Eigen::Map<Eigen::VectorXd> y, Eigen::Map<Eigen::VectorXd> thetaProposal, Eigen::Map<Eigen::MatrixXd> uProposal);
+RcppExport SEXP _pfexamplesinr_svolApproxLL(SEXP ySEXP, SEXP thetaProposalSEXP, SEXP uProposalSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< Eigen::Map<Eigen::VectorXd> >::type y(ySEXP);
+    Rcpp::traits::input_parameter< Eigen::Map<Eigen::VectorXd> >::type thetaProposal(thetaProposalSEXP);
+    Rcpp::traits::input_parameter< Eigen::Map<Eigen::MatrixXd> >::type uProposal(uProposalSEXP);
+    rcpp_result_gen = Rcpp::wrap(svolApproxLL(y, thetaProposal, uProposal));
+    return rcpp_result_gen;
+END_RCPP
+}
 // rcppeigen_hello_world
 Eigen::MatrixXd rcppeigen_hello_world();
 RcppExport SEXP _pfexamplesinr_rcppeigen_hello_world() {
@@ -56,6 +69,7 @@ END_RCPP
 }
 
 static const R_CallMethodDef CallEntries[] = {
+    {"_pfexamplesinr_svolApproxLL", (DL_FUNC) &_pfexamplesinr_svolApproxLL, 3},
     {"_pfexamplesinr_rcppeigen_hello_world", (DL_FUNC) &_pfexamplesinr_rcppeigen_hello_world, 0},
     {"_pfexamplesinr_rcppeigen_outerproduct", (DL_FUNC) &_pfexamplesinr_rcppeigen_outerproduct, 1},
     {"_pfexamplesinr_rcppeigen_innerproduct", (DL_FUNC) &_pfexamplesinr_rcppeigen_innerproduct, 1},
