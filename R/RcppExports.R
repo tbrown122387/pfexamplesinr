@@ -8,8 +8,6 @@
 #' @param thetaProposal parameter vector (order is phi, beta, sigma)
 #' @param uProposal standard normal variates of dimension time*(particles + 1) X 1
 #' @return approximate log-likelihood
-NULL
-
 svolApproxLL <- function(y, thetaProposal, uProposal) {
     .Call('_pfexamplesinr_svolApproxLL', PACKAGE = 'pfexamplesinr', y, thetaProposal, uProposal)
 }

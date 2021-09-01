@@ -34,7 +34,6 @@ using svol_pfilter = svol_sisr_hilb<NP,NB, hilb_sys_resamp_T, double, debug_mode
 //' @param thetaProposal parameter vector (order is phi, beta, sigma)
 //' @param uProposal standard normal variates of dimension time*(particles + 1) X 1
 //' @return approximate log-likelihood
-// 
 // [[Rcpp::export]]
 double svolApproxLL(Eigen::Map<Eigen::VectorXd> y, Eigen::Map<Eigen::VectorXd> thetaProposal, Eigen::Map<Eigen::VectorXd> uProposal) {
 
