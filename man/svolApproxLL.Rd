@@ -11,7 +11,7 @@ svolApproxLL(y, thetaProposal, uProposal)
 
 \item{thetaProposal}{parameter vector (order is phi, beta, sigma)}
 
-\item{uProposal}{standard normal variates of dimension time X (particles + 1)}
+\item{uProposal}{standard normal variates of dimension time*(particles + 1) X 1}
 }
 \value{
 approximate log-likelihood

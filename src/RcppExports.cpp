@@ -12,14 +12,14 @@ Rcpp::Rostream<false>& Rcpp::Rcerr = Rcpp::Rcpp_cerr_get();
 #endif
 
 // svolApproxLL
-double svolApproxLL(Eigen::Map<Eigen::VectorXd> y, Eigen::Map<Eigen::VectorXd> thetaProposal, Eigen::Map<Eigen::MatrixXd> uProposal);
+double svolApproxLL(Eigen::Map<Eigen::VectorXd> y, Eigen::Map<Eigen::VectorXd> thetaProposal, Eigen::Map<Eigen::VectorXd> uProposal);
 RcppExport SEXP _pfexamplesinr_svolApproxLL(SEXP ySEXP, SEXP thetaProposalSEXP, SEXP uProposalSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
     Rcpp::traits::input_parameter< Eigen::Map<Eigen::VectorXd> >::type y(ySEXP);
     Rcpp::traits::input_parameter< Eigen::Map<Eigen::VectorXd> >::type thetaProposal(thetaProposalSEXP);
-    Rcpp::traits::input_parameter< Eigen::Map<Eigen::MatrixXd> >::type uProposal(uProposalSEXP);
+    Rcpp::traits::input_parameter< Eigen::Map<Eigen::VectorXd> >::type uProposal(uProposalSEXP);
     rcpp_result_gen = Rcpp::wrap(svolApproxLL(y, thetaProposal, uProposal));
     return rcpp_result_gen;
 END_RCPP
