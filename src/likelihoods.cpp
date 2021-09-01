@@ -8,7 +8,7 @@
 // [[Rcpp::depends(RcppEigen)]]
 
 // choose number of particles, and number of bits for inverse Hilbert curve map  
-#define NP 2
+#define NP 500
 #define NB 5
 #define debug_mode false
 
@@ -85,8 +85,8 @@ double svolApproxLL(Eigen::Map<Eigen::VectorXd> y, Eigen::Map<Eigen::VectorXd> t
 
 /*** R
 numTime <- 3
-numParts <- 2 # make sure this agrees with NP
-u <- matrix(rnorm(numTime*(numParts+1)), ncol = numParts+1)
+numParts <- 500 # make sure this agrees with NP
+u <- rnorm(numTime*(numParts+1))
 params <- c(.9, 1, .1) # -1 < phi < 1, beta, sigma > 0
 #svolApproxLL(rnorm(numTime), params, u)
 hist(replicate(100, svolApproxLL(rnorm(numTime), params, u)))
