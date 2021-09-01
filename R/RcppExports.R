@@ -3,27 +3,14 @@
 
 #' Calculates approximate log-likelihood of simple stochastic volatility model (Taylor '82)
 #'
+#' @name svolApproxLL
 #' @param y univariate time series vector
 #' @param thetaProposal parameter vector (order is phi, beta, sigma)
 #' @param uProposal standard normal variates of dimension time*(particles + 1) X 1
 #' @return approximate log-likelihood
+NULL
+
 svolApproxLL <- function(y, thetaProposal, uProposal) {
     .Call('_pfexamplesinr_svolApproxLL', PACKAGE = 'pfexamplesinr', y, thetaProposal, uProposal)
-}
-
-rcppeigen_hello_world <- function() {
-    .Call('_pfexamplesinr_rcppeigen_hello_world', PACKAGE = 'pfexamplesinr')
-}
-
-rcppeigen_outerproduct <- function(x) {
-    .Call('_pfexamplesinr_rcppeigen_outerproduct', PACKAGE = 'pfexamplesinr', x)
-}
-
-rcppeigen_innerproduct <- function(x) {
-    .Call('_pfexamplesinr_rcppeigen_innerproduct', PACKAGE = 'pfexamplesinr', x)
-}
-
-rcppeigen_bothproducts <- function(x) {
-    .Call('_pfexamplesinr_rcppeigen_bothproducts', PACKAGE = 'pfexamplesinr', x)
 }
 

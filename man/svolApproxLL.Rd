@@ -3,9 +3,6 @@
 \name{svolApproxLL}
 \alias{svolApproxLL}
 \title{Calculates approximate log-likelihood of simple stochastic volatility model (Taylor '82)}
-\usage{
-svolApproxLL(y, thetaProposal, uProposal)
-}
 \arguments{
 \item{y}{univariate time series vector}
 

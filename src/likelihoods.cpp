@@ -29,10 +29,12 @@ using svol_pfilter = svol_sisr_hilb<NP,NB, hilb_sys_resamp_T, double, debug_mode
 
 //' Calculates approximate log-likelihood of simple stochastic volatility model (Taylor '82)
 //'
+//' @name svolApproxLL
 //' @param y univariate time series vector
 //' @param thetaProposal parameter vector (order is phi, beta, sigma)
 //' @param uProposal standard normal variates of dimension time*(particles + 1) X 1
 //' @return approximate log-likelihood
+// 
 // [[Rcpp::export]]
 double svolApproxLL(Eigen::Map<Eigen::VectorXd> y, Eigen::Map<Eigen::VectorXd> thetaProposal, Eigen::Map<Eigen::VectorXd> uProposal) {
 
