@@ -536,7 +536,7 @@ void SISRFilterCRN<nparts,dimx,dimy,dimu,dimur,resamp_t,float_t, debug>::filter(
             m_logUnNormWeights[ii] += logFEv(newSamp, m_particles[ii]);
             m_logUnNormWeights[ii] += logGEv(data, newSamp);
             m_logUnNormWeights[ii] -= logQEv(newSamp, m_particles[ii], data);
-
+            
             // overwrite stuff
             m_particles[ii] = newSamp;
 
@@ -588,6 +588,7 @@ void SISRFilterCRN<nparts,dimx,dimy,dimu,dimur,resamp_t,float_t, debug>::filter(
         {
             // sample particles
             m_particles[ii] = Xi1(Uarr[ii], data);
+            
             m_logUnNormWeights[ii] += logMuEv(m_particles[ii]);
             m_logUnNormWeights[ii] += logGEv(data, m_particles[ii]);
             m_logUnNormWeights[ii] -= logQ1Ev(m_particles[ii], data);
