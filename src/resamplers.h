@@ -1069,7 +1069,7 @@ void sys_hilb_resampler<nparts, dimx, num_hilb_bits, float_t>::resampLogWts(arra
     // resample 
     // unlike stratified, take advantage of U's being sorted
     arrayVec tmpPartics;
-    unsigned idx;
+    unsigned idx = 0;
     unsigned int j = 0;
     for(size_t i = 0; i < nparts; ++i){ // tmpPartics, Uis
 
