@@ -1,0 +1,13 @@
+cff-version: 1.2.0
+title: 'pfexamplesinr'
+message: >-
+  If you use this software, please cite it using the
+  metadata from this file.
+type: software
+authors:
+  - given-names: Taylor
+    family-names: Brown
+    email: tbrown122387@gmail.com
+    affiliation: University of Virginia Department of Statistics
+    orcid: 'https://orcid.org/0000-0003-4972-6251'
+
