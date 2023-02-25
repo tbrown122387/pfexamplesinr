@@ -9,5 +9,5 @@ Description: This package provides some demonstrations of calling PF c++ code in
 License: MIT + file LICENSE
 Imports: Rcpp (>= 1.0.7)
 LinkingTo: Rcpp, RcppEigen
-RoxygenNote: 7.1.1
+RoxygenNote: 7.2.1
 Encoding: UTF-8

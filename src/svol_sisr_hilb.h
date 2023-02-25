@@ -5,9 +5,9 @@
 // #include <pf/rv_eval.h> // for evaluating densities and pmfs
 // #include <pf/rv_samp.h> // for sampling random numbers
 
-#include "sisr_filter.h" // inherit the right particle filter
-#include "rv_eval.h" // for evaluating densities and pmfs
-#include "rv_samp.h" // for sampling random numbers
+#include "pf/include/pf/sisr_filter.h" // inherit the right particle filter
+#include "pf/include/pf/rv_eval.h" // for evaluating densities and pmfs
+#include "pf/include/pf/rv_samp.h" // for sampling random numbers
 
 
 using namespace pf;
