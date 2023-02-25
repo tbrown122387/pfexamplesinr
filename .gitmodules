@@ -1,3 +1,6 @@
 [submodule "include/pf"]
 	path = include/pf
 	url = https://github.com/tbrown122387/pf.git
+[submodule "pf"]
+	path = pf
+	url = https://github.com/tbrown122387/pf.git
