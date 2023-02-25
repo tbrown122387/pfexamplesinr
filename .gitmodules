@@ -4,3 +4,6 @@
 [submodule "pf"]
 	path = pf
 	url = https://github.com/tbrown122387/pf.git
+[submodule "src/pf"]
+	path = src/pf
+	url = https://github.com/tbrown122387/pf.git
