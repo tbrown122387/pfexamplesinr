@@ -7,7 +7,7 @@ Author: Taylor R. Brown
 Maintainer: Who to complain to <trb5me@virginia.edu>
 Description: This package provides some demonstrations of calling PF c++ code in R.
 License: MIT + file LICENSE
-Imports: Rcpp (>= 1.0.7)
+Imports: Rcpp (>= 1.0.7), RcppEigen
 LinkingTo: Rcpp, RcppEigen
 RoxygenNote: 7.2.1
 Encoding: UTF-8
